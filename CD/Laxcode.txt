@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+    printf("Hellow");
+    int a,b,c;
+    a =10;
+    b =20;
+    c = a + b;
+    printf("Anser is %d",c);
+    getch();
+}
