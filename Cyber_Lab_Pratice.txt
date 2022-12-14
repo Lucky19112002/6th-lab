@@ -1,0 +1,17 @@
+Level - 1 : NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+Level - 2 : rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+Level - 3 : aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+Level - 4 : 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+Level - 5 : lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+	C- find . -size 1033c \! -executable  -readable 
+Level - 6 : P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU	
+	C- find / -user bandit7 -group bandit6 -size 33c | grep "password"
+Level - 7 : z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+	C- cat data.txt | grep "millionth"
+Level - 8 : TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+	C- cat data.txt | sort | uniq -u
+Level - 9 : EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+	C- strings data.txt | grep =
+Level - 10 : G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+	C- base64 -d data.txt
+Level - 11 : 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
