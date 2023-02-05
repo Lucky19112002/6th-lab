@@ -1,40 +1,20 @@
 #include<stdio.h>
 #include<string.h>
 #define TSIZE 128
-// table[i][j] stores
-// the index of production that must be applied on
-// ith varible if the input is
-// jth nonterminal
 int table[100][TSIZE];
-// stores all list of terminals
-// the ASCII value if use to index terminals
-// terminal[i] = 1 means the character with
-// ASCII value is a terminal
 char terminal[TSIZE];
-// stores all list of terminals
-// only Upper case letters from 'A' to 'Z'
-// can be nonterminals
-// nonterminal[i] means ith alphabet is present as
-// nonterminal is the grammar
 char nonterminal[26];
-// structure to hold each production
-// str[] stores the production
-// len is the length of production
 struct product {
     char str[100];
     int len;
 }pro[20];
-// no of productions in form A->ß
 int no_pro;
 char first[26][TSIZE];
 char follow[26][TSIZE];
-// stores first of each production in form A->ß
 char first_rhs[100][TSIZE];
-// check if the symbol is nonterminal
 int isNT(char c) {
     return c >= 'A' && c <= 'Z';
 }
-// reading data from the file
 void readFromFile() {
     FILE* fptr;
     fptr = fopen("P_$4_Input.txt", "r");
@@ -149,7 +129,6 @@ void add_FIRST_A_to_FIRST_RHS__B(char A, int B) {
             first_rhs[B][i] = first[A - 'A'][i] || first_rhs[B][i];
     }
 }
-// Calculates FIRST(ß) for each A->ß
 void FIRST_RHS() {
     int i, j;
     int t = 0;
@@ -181,7 +160,6 @@ int main() {
     FIRST_RHS();
     int i, j, k;
     
-    // display first of each variable
     printf("\n");
     for (i = 0; i < no_pro; ++i) {
         if (i == 0 || (pro[i - 1].str[0] != pro[i].str[0])) {
@@ -196,7 +174,7 @@ int main() {
         }
     }
     
-    // display follow of each variable
+    
     printf("\n");
     for (i = 0; i < no_pro; ++i) {
         if (i == 0 || (pro[i - 1].str[0] != pro[i].str[0])) {
@@ -210,8 +188,6 @@ int main() {
             printf("\n");
         }
     }
-    // display first of each variable ß
-    // in form A->ß
     printf("\n");
     for (i = 0; i < no_pro; ++i) {
         printf("FIRST OF %s: ", pro[i].str);
@@ -223,18 +199,9 @@ int main() {
         printf("\n");
     }
     
-    // the parse table contains '$'
-    // set terminal['$'] = 1
-    // to include '$' in the parse table
     terminal['$'] = 1;
     
-    // the parse table do not read '^'
-    // as input
-    // so we set terminal['^'] = 0
-    // to remove '^' from terminals
     terminal['^'] = 0;
-    
-    // printing parse table
     printf("\n");
     printf("\n\t**************** LL(1) PARSING TABLE *******************\n");
     printf("\t--------------------------------------------------------\n");
