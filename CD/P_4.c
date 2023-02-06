@@ -33,6 +33,9 @@ void readFromFile() {
                 pro[no_pro].str[0] = pro[no_pro - 1].str[0];
                 pro[no_pro].str[1] = pro[no_pro - 1].str[1];
                 pro[no_pro].str[2] = pro[no_pro - 1].str[2];
+                pro[no_pro].str[3] = pro[no_pro - 1].str[3];
+                pro[no_pro].str[4] = pro[no_pro - 1].str[4];
+                
                 j = 3;
             }
             else {
@@ -69,7 +72,7 @@ void FOLLOW() {
             if (!nonterminal[k])    continue;
             char nt = k + 'A';
             for (i = 0; i < no_pro; ++i) {
-                for (j = 3; j < pro[i].len; ++j) {
+                for (j = 5; j < pro[i].len; ++j) {
                     if (nt == pro[i].str[j]) {
                         for (x = j + 1; x < pro[i].len; ++x) {
                             char sc = pro[i].str[x];
@@ -174,7 +177,6 @@ int main() {
         }
     }
     
-    
     printf("\n");
     for (i = 0; i < no_pro; ++i) {
         if (i == 0 || (pro[i - 1].str[0] != pro[i].str[0])) {
@@ -202,8 +204,9 @@ int main() {
     terminal['$'] = 1;
     
     terminal['^'] = 0;
+    
     printf("\n");
-    printf("\n\t**************** LL(1) PARSING TABLE *******************\n");
+    printf("\n\t LL(1) PARSING TABLE \n");
     printf("\t--------------------------------------------------------\n");
     printf("%-10s", "");
     for (i = 0; i < TSIZE; ++i) {
@@ -231,7 +234,7 @@ int main() {
     for (i = 0; i < no_pro; ++i) {
         if (i == 0 || (pro[i - 1].str[0] != pro[i].str[0])) {
             printf("%-10c", pro[i].str[0]);
-            for (j = 0; j < TSIZE; ++j) {
+            for (j = 3; j < TSIZE; ++j) {
                 if (table[k][j]) {
                     printf("%-10s", pro[table[k][j] - 1].str);
                 }

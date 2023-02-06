@@ -1,6 +1,6 @@
-E->TE'
-E'->+TE'
-T->FT'
-T->*FT
+E->TA
+A->+TA
+T->FB
+B->*FT
 F->(E)
-F->%
+F->id
